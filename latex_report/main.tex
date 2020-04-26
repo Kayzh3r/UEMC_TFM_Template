@@ -2,20 +2,21 @@
 %
 %
 \usepackage{counttexruns}
-%Preamble file
+%%%%%%%%% Preamble file %%%%%%%%%%%%%%
 \input{preamble}
 \include{include/newCommands}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
 
-% Use only if you have a glossary
-%%%%%%%%%%%%%%%%% Glossary %%%%%%%%%%%%%%%
-% Glossary and Acronyms list
+%%%%%%%%%%%%%% Glossary %%%%%%%%%%%%%%
 \usepackage{glossaries}
 \makeglossaries
 \include{glossary_acronyms/glossary} % Archivo con las entradas del glosario
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%Define the document Data
-%%%%%%%%%%% DOCUMENT DATA %%%%%%%%%%
+%
+%%%%%%%%%%% DOCUMENT DATA %%%%%%%%%%%%
 \newcommand{\project}{Title of the project}
 \newcommand{\projectshort}{Short Title}
 \newcommand{\authorname}{Ignazio F.Finazzi}
@@ -26,25 +27,27 @@
 \newcommand{\printDate}{\dateFMT\today}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-% Write the PDF metadata
-%%%%%%%%%%% PDF METADATA %%%%%%%%%
+%
+%%%%%%%%%%% PDF METADATA %%%%%%%%%%%%%
 \hypersetup{pdftitle={\project},
 	pdfauthor={Ignazio F.Finazzi},
 	pdfsubject={\project},
 	pdfkeywords={\company}
 }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%If the document is a draft put the word draft in background
+%
+%%%%%%%%% DRAFt TWATERMARK %%%%%%%%%%%
 \ifthenelse{\equal{\doctype}{Draft} \or \equal{\doctype}{draft}}
 {
 	\usepackage[angle=60,
 				color=black!40,
 				scale=5]{background}}{}
 	\backgroundsetup{contents={DRAFT \printDate}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-
-
+%
+%%%%%%%%%%%% DOCUMENT %%%%%%%%%%%%%%%%
 \begin{document}
 	%\renewcommand{\abstractname}{Abstract}
 	%\renewcommand{\appendixname}{Ap\'endices}
@@ -57,10 +60,7 @@
 	\renewcommand{\tablename}{Tabla}
 	% \setcounter{page}{-4}
 	\setcounter{counttexruns}{5}
-	%
 	\thispagestyle{empty}
-	% Make the title using the data previously specified
-	% There are three titles availables
 	\coverPage
 	\thispagestyle{empty}
 	\clearpage
@@ -92,3 +92,4 @@
 	\bibliography{Bibliography/TFMbibliografia}
 	%
 \end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -1,23 +1,10 @@
 %%%%%%% PACKAGES LOADING %%%%%%%%%%%
 %
 %
-
-%\usepackage{etex}
-%\reserveinserts{28}
-%\usepackage[tocflat]{tocstyle}
-%\makeatletter
-%\renewcommand\tableofcontents{%
-%	\null\hfill\textbf{\Large\contentsname}\hfill\null\par
-%	\@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}%
-%	\@starttoc{toc}%
-%}
-%\makeatother
-
 \usepackage[bottom]{footmisc} %keep footnote sticked at the end of the page
-
+%
 %
 \usepackage{url} %Tratamiento de las urls
-% Cortar URLs en cualquier parte...
 \def\UrlBreaks{\do\.\do\@\do\\\do\/\do\!\do\_\do\|\do\;\do\>\do\]%
  \do\)\do\,\do\?\do\'\do+\do\=\do\#\do\&\do\a\do\b\do\c\do\d\do\e%
  \do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r%
@@ -25,67 +12,58 @@
  \do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N\do\O\do\P\do\Q\do\R%
  \do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z\do\1\do\2\do\3\do\4\do\5%
  \do\6\do\7\do\8\do\9\do\0}%
-%%%%%%%%%%%%%%%%%%%%
-
-%%%% Page Geometry %%%%% 
-%\usepackage[right=2cm,left=3cm,top=4cm,bottom=2cm,headsep=2cm,footskip=0.5cm]{geometry}
-\usepackage[top=6cm,bottom=3cm,headheight=4cm, headsep=1cm, footskip=2cm]{geometry}
-%\sloppy % Evita los "overfull box". Puede ocurrir que una palabra pase a la l�nea siguiente.
-\usepackage{pdflscape}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%
+%%%%%%%% Page Geometry %%%%%%%%%%%%%
+\usepackage[top=6cm,bottom=3cm,headheight=4cm, headsep=1cm, footskip=2cm]{geometry}
+\usepackage{pdflscape}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%%%%%%%%%% Dummy content %%%%%%%%%%%
 \usepackage{lipsum}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
 %%%%%%%%% Font & Language %%%%%%%%%%
 % XeLaTeX compiler
 \usepackage{xltxtra,fontspec,xunicode}
-%\setmainfont{Verdana}
 \setsansfont{Verdana}
-%\setromanfont{Computer Modern}
-% PDFLaTeX compiler
-%\usepackage[utf8]{inputenc}
-%\usepackage[T1]{fontenc}
-%\usepackage{lmodern}
 \usepackage{microtype}
-
-
-% Enlarge the badboxes tolerances
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%% Enlarge the badboxes tolerances %
 \hfuzz=20pt
 \vfuzz=20pt
 \hbadness=2000
 \vbadness=\maxdimen
 \emergencystretch 3em%
 %
-\usepackage[spanish]{babel}%% english set as main language 
 %
-%uncomment below commands if the text is written in spanish
-% \usepackage[spanish]{translator}
-% \renewcommand{\shorthandsspanish}{}
-% \DeclareInputText{128}{\euro} % Lo mapea al teclado (128-> Windows, 164-> Linux)
-%
+%%%%%%%%%%%% Language %%%%%%%%%%%%%
+\usepackage[spanish]{babel}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%%%%%%%%% Floating %%%%%%%%%%%%%%%%%%%
 \usepackage{floatrow}
-%\usepackage{subfig}
 \usepackage{fixmath}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
 %%%%%%% Colors & Graphics %%%%%%%%%%%%
-%\usepackage[pdftex,usenames,dvipsnames,table]{xcolor} % Permite usar: \color{Ncolor} \textcolor{Ncolor}{Texto}
 \usepackage{amssymb}
 \usepackage{soul}
-%\usepackage[pdftex]{graphicx} 
 \usepackage{subcaption}
-%\usepackage{wrapfig} 
-%\usepackage{caption}
-%\captionsetup{margin=10pt,font=footnotesize,labelfont=sc}
 \usepackage[space]{grffile}
 \usepackage{tikz}
 \usepackage[tikz]{bclogo}
 \usetikzlibrary{positioning, arrows, intersections, calc, through, backgrounds, patterns,shapes.geometric}
-% \usepackage{tikz-3dplot}
 \usepackage{pgfplots,pgfplotstable}
 \usepgfplotslibrary{polar}
 \usepackage[american,siunitx]{circuitikz}
-%\usetikzlibrary{arrows.meta,shapes}
 \usetikzlibrary{arrows}
 \usepackage{lettrine}
 \usepackage{amsfonts}
@@ -95,10 +73,14 @@
 \usepackage{mathtools}
 \usetikzlibrary{calc,fadings,decorations.pathreplacing}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%
+%
+%%%%%%%%%%%%%%% ToC %%%%%%%%%%%%%%%%%%
 \setcounter{tocdepth}{2} % Table Of Content depth
-
-%%%%%%%% Math %%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%%%%%%%%%%%%%%% Math %%%%%%%%%%%%%%%%%
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
@@ -111,8 +93,9 @@
   \let\@ifnextchar\new@ifnextchar
   \array{#1}}
 \makeatother %in order to draw vertical lines in bmatrix environment
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
 %%%%%%%%% Tables Utilities %%%%%%%%%%%
 \usepackage{array}
 \usepackage{multirow}
@@ -127,19 +110,21 @@
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%% Headers Utilities %%%%%%%%%%%%
+%
+%
+%%%%%%%% Headers Utilities %%%%%%%%%%%
 \usepackage{fancyhdr}
 \usepackage{lastpage}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%%%%%%% Codes %%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%%%%%%%%%%%%% Codes %%%%%%%%%%%%%%%%%%
 \usepackage{listings}  % Source code
 \usepackage{moreverb}  % For including source code with tabs
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%% Various %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%%%%%%%%%%%%%% Various %%%%%%%%%%%%%%%
 \usepackage{counttexruns}
 \usepackage{textcomp}
 \usepackage{parskip}
@@ -150,9 +135,10 @@
 \usepackage{eurosym}	% Include euro symbol
 \renewcommand{\labelitemi}{$\vartriangleright$}
 \renewcommand{\labelitemii}{$\circ$}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%% HyperLinks %%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%%%%%%%%%%%% HyperLinks %%%%%%%%%%%%%%
 \usepackage[hidelinks]{hyperref}
 \hypersetup{%
 pdfpagemode={UseOutlines},
@@ -164,27 +150,20 @@ plainpages=false
 %citecolor={gray},
 %urlcolor={blue}
 }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%% Bibliography %%%%%%%%%%%%
-%\usepackage[numbers]{natbib}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%%%%%%%%%%%% Bibliography %%%%%%%%%%%%
 \usepackage{apacite}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
- \usepackage{epstopdf}
-% %\DeclareGraphicsRule{.eps}{pdf}{.pdf}{`epstopdf #1}
-% \DeclareGraphicsRule{.pdf}{eps}{.bb}{`convert #1 eps:-}%      PDF-graphics
-%    
-% % pdfTeX is running in pdf mode
-% \ExecuteOptions{pdftex}%
-% \AtEndOfPackage{%
-% \g@addto@macro\Gin@extensions{.eps.gz,.eps.zip}%
-% \@namedef{Gin@rule@.eps.gz}#1{{pdf}{.pdf}{`gunzip -c #1 | epstopdf -f >\Gin@base.pdf}}%
-% \@namedef{Gin@rule@.eps.zip}#1{{pdf}{.pdf}{`unzip -p #1 | epstopdf -f >\Gin@base.pdf}}%
-% }%
-
-%%%%%%%%%%% Add spaces above and below the equations %%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%%%%%%%%%%%%%%% EPS %%%%%%%%%%%%%%%%%%
+\usepackage{epstopdf}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%%%%%%%% Equations spaces %%%%%%%%%%%%
 \let\originalequation\equation
 \let\endoriginalequation\endequation
 \renewenvironment{equation}
@@ -206,15 +185,17 @@ plainpages=false
   \addtolength\belowdisplayshortskip{15pt}
   \addtolength\belowdisplayskip{15pt}}
 {\endoriginaldisplaymath \ignorespacesafterend}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%% Roman Numerals in Text %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%%%%%% Roman Numerals in Text %%%%%%%%
 \makeatletter
 \newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
 \makeatother
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%% Change Chapter & Section Format %%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%% Change Chapter & Section Format %%%
 \usepackage{titlesec}
 %
 \titleformat{\chapter}[display]
@@ -229,8 +210,10 @@ plainpages=false
 {\normalfont\rmfamily \slshape}
 {\thesubsection}{12pt}{}[]
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Date format (XX/XX/XXXX).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%%%%% Date format (XX/XX/XXXX) %%%%%%%
 \usepackage{datetime}
 \newdateformat{dateFMT}
 {%
@@ -240,10 +223,10 @@ plainpages=false
 {%
 	\monthname[\THEMONTH] de \THEYEAR
 }
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%% Headers Definition %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%%%%%% Headers Definition %%%%%%%%%%%%
 \headheight=70pt
 \fancyheadoffset[L,R]{1cm}
 \fancyfootoffset[L,R]{1cm}
@@ -261,10 +244,10 @@ plainpages=false
 \end{tabular}}}
 }
 \renewcommand{\headrulewidth}{0pt}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 %
-%%%%%%%%%%%%%%%%% COVER PAGE %%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% COVER PAGE %%%%%%%%%%%%%%
 \newlength{\drop}
 \newcommand*{\coverPage}
 {
@@ -318,4 +301,4 @@ plainpages=false
 	}\par
 	\endgroup
 }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
