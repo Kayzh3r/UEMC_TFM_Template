@@ -1,0 +1,84 @@
+%% ARROW
+\newcommand{\arrowTikz}[1]
+{
+	\begin{tikzpicture}[rotate=#1]
+		\coordinate (initPoint)   at (0,0);
+		\coordinate (endingPoint) at (0.5,0);
+		\draw [line width=1pt,-{Stealth[length=3pt,width=4pt,inset=0.3pt]}](initPoint)--(endingPoint);
+	\end{tikzpicture}
+}
+
+%% SECTION AND SUBSECTIONS REFERENCE
+\newcommand{\refsec}[1]{section~\ref{#1}}
+\newcommand{\refsubsec}[1]{subsecsection~\ref{#1}}
+
+%% SUPER & SUB SCRIPT
+\newcommand{\superscript}[1]{\ensuremath{^{\textrm{#1}}}}
+\newcommand{\subscript}[1]{\ensuremath{_{\textrm{#1}}}}
+%% BOLD ITEM
+\newcommand\litem[1]{\item{\bfseries #1\enspace} \\}
+%% WRITE A VECTOR IN BOLD
+\newcommand{\bvec}[1]{\vec{\mathbf{#1}}}
+%% PARTIAL DERIVATIVE
+\newcommand{\pdv}[2]{\frac{\partial #1}{\partial #2}}
+%% BIGO
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+\newcommand{\bigO}[1]{$\mathpzc{O}(#1)$}
+%% FOR TABLES
+\newfloatcommand{capbtabbox}{table}[][\FBwidth]
+%% EARTH SPHERE DRAWING
+\newcommand\pgfmathsinandcos[3]{%
+	\pgfmathsetmacro#1{sin(#3)}%
+	\pgfmathsetmacro#2{cos(#3)}%
+}
+\newcommand\LongitudePlane[3][current plane]{%
+	\pgfmathsinandcos\sinEl\cosEl{#2} % elevation
+	\pgfmathsinandcos\sint\cost{#3} % azimuth
+	\tikzset{#1/.style={cm={\cost,\sint*\sinEl,0,\cosEl,(0,0)}}}
+}
+\newcommand\LatitudePlane[3][current plane]{%
+	\pgfmathsinandcos\sinEl\cosEl{#2} % elevation
+	\pgfmathsinandcos\sint\cost{#3} % latitude
+	\pgfmathsetmacro\yshift{\cosEl*\sint}
+	\tikzset{#1/.style={cm={\cost,0,0,\cost*\sinEl,(0,\yshift)}}} %
+}
+\newcommand\DrawLongitudeCircle[2][1]{
+	\LongitudePlane{\angEl}{#2}
+	\tikzset{current plane/.prefix style={scale=#1}}
+	% angle of "visibility"
+	\pgfmathsetmacro\angVis{atan(sin(#2)*cos(\angEl)/sin(\angEl))} %
+	\draw[current plane] (\angVis:1) arc (\angVis:\angVis+180:1);
+	\draw[current plane,dashed] (\angVis-180:1) arc (\angVis-180:\angVis:1);
+}
+\newcommand\DrawLongitudeCircleRed[2][1]{
+	\LongitudePlane{\angEl}{#2}
+	\tikzset{current plane/.prefix style={scale=#1}}
+	% angle of "visibility"
+	\pgfmathsetmacro\angVis{atan(sin(#2)*cos(\angEl)/sin(\angEl))} %
+	\draw[current plane, color = red] (\angVis:1) arc (\angVis:\angVis+180:1);
+	\draw[current plane,dashed, color = red] (\angVis-180:1) arc (\angVis-180:\angVis:1);
+}
+\newcommand\DrawLatitudeCircle[2][2]{
+	\LatitudePlane{\angEl}{#2}
+	\tikzset{current plane/.prefix style={scale=#1}}
+	\pgfmathsetmacro\sinVis{sin(#2)/cos(#2)*sin(\angEl)/cos(\angEl)}
+	% angle of "visibility"
+	\pgfmathsetmacro\angVis{asin(min(1,max(\sinVis,-1)))}
+	\draw[current plane] (\angVis:1) arc (\angVis:-\angVis-180:1);
+	\draw[current plane,dashed] (180-\angVis:1) arc (180-\angVis:\angVis:1);
+}
+\newcommand\DrawLatitudeCircleRed[2][2]{
+	\LatitudePlane{\angEl}{#2}
+	\tikzset{current plane/.prefix style={scale=#1}}
+	\pgfmathsetmacro\sinVis{sin(#2)/cos(#2)*sin(\angEl)/cos(\angEl)}
+	% angle of "visibility"
+	\pgfmathsetmacro\angVis{asin(min(1,max(\sinVis,-1)))}
+	\draw[current plane,red] (\angVis:1) arc (\angVis:-\angVis-180:1);
+	\draw[current plane,dashed,red] (180-\angVis:1) arc (180-\angVis:\angVis:1);
+}
+
+%% CAPTION FOR EQUATION SET
+\newcounter{equationset}
+\newcommand{\equationset}[1]{% \equationset{<caption>}
+	\refstepcounter{equationset}% Step counter
+	\noindent\makebox[\linewidth]{Ecuaci\'on~\theequationset: #1}}% Print caption

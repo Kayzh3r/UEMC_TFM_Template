@@ -1,0 +1,94 @@
+\documentclass[12pt, a4paper, oneside]{report}
+%
+%
+\usepackage{counttexruns}
+%Preamble file
+\input{preamble}
+\include{include/newCommands}
+
+% Use only if you have a glossary
+%%%%%%%%%%%%%%%%% Glossary %%%%%%%%%%%%%%%
+% Glossary and Acronyms list
+\usepackage{glossaries}
+\makeglossaries
+\include{glossary_acronyms/glossary} % Archivo con las entradas del glosario
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%Define the document Data
+%%%%%%%%%%% DOCUMENT DATA %%%%%%%%%%
+\newcommand{\project}{Title of the project}
+\newcommand{\projectshort}{Short Title}
+\newcommand{\authorname}{Ignazio F.Finazzi}
+\newcommand{\tutoredby}{Tutor Name and Surname}
+\newcommand{\company}{Universidad Europea Miguel de Cervantes}
+\newcommand{\doctype}{Draft} %or draft
+\newcommand{\revision}{\thecounttexruns}
+\newcommand{\printDate}{\dateFMT\today}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Write the PDF metadata
+%%%%%%%%%%% PDF METADATA %%%%%%%%%
+\hypersetup{pdftitle={\project},
+	pdfauthor={Ignazio F.Finazzi},
+	pdfsubject={\project},
+	pdfkeywords={\company}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%If the document is a draft put the word draft in background
+\ifthenelse{\equal{\doctype}{Draft} \or \equal{\doctype}{draft}}
+{
+	\usepackage[angle=60,
+				color=black!40,
+				scale=5]{background}}{}
+	\backgroundsetup{contents={DRAFT \printDate}}
+%
+
+
+\begin{document}
+	%\renewcommand{\abstractname}{Abstract}
+	%\renewcommand{\appendixname}{Ap\'endices}
+	%\renewcommand{\bibname}{Bibliograf\'ia}
+	%\renewcommand{\chaptername}{Cap\'itulo]
+	\renewcommand{\contentsname}{\'Indice de contenidos}
+	\renewcommand{\figurename}{Figura}
+	\renewcommand{\listfigurename}{\'Indice de figuras}
+	\renewcommand{\listtablename}{\'Indice de tablas}
+	\renewcommand{\tablename}{Tabla}
+	% \setcounter{page}{-4}
+	\setcounter{counttexruns}{5}
+	%
+	\thispagestyle{empty}
+	% Make the title using the data previously specified
+	% There are three titles availables
+	\coverPage
+	\thispagestyle{empty}
+	\clearpage
+	\tableofcontents
+	\listoffigures
+	\listoftables
+	\clearpage
+	\include{chapters/studyObjectives}
+	\clearpage
+	\include{chapters/situationalAnalysis}
+	\clearpage
+	\include{chapters/dataGathering}
+	\clearpage
+	\include{chapters/eda}
+	\clearpage
+	\include{chapters/modelDesign}
+	\clearpage
+	\include{chapters/results}
+	\clearpage
+	\include{chapters/conclusions}
+	\appendix
+	\include{appendices/code}
+	\clearpage
+	\printglossaries
+	\renewcommand{\url}[1]{\href{#1}{link}}
+	% Uncomment the following line to print the entire bibliography
+	%\nocite{*}
+	\bibliographystyle{apacite}
+	\bibliography{Bibliography/TFMbibliografia}
+	%
+\end{document}

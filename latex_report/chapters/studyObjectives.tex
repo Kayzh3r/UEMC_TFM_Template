@@ -1,0 +1,72 @@
+\chapter{Objetivos del trabajo}
+Este documento es una plantilla realizada en \LaTeX para el \gls{TFM} de la \gls{UEMC}. Este es un ejemplo de bibliografía\cite{Finazzi}.
+
+A continuación un ejemplo de enumeración:
+\begin{itemize}
+	\item Item 1
+	\item Item 2
+	\begin{enumerate}
+		\item Enum 1
+		\item Enum 2
+		\item Enum 3
+	\end{enumerate}
+	\item Item 3
+\end{itemize}
+
+Ejemplos de estilo \textbf{negrita}, \textit{cursiva}, \underline{subrayado}, \textbf{\textit{\underline{pack completo}}}. Ecuación en línea $L=\frac{1}{2}\rho V^2 A_{alar}C_l$. La ecuación \ref{eq: massDif} presenta una ecuación alineada.
+
+\begin{align}
+	\nonumber
+	dm &= \rho dV \\ \nonumber
+	   &= \rho v dt\cdot dS\cdot \cos{\theta}\\ \nonumber
+	   &= \rho dt \overrightarrow{v}\cdot d\overrightarrow{S}
+\end{align}\label{eq: massDif}
+\equationset{Ecuación de la variación de la masa}
+
+\begin{figure}[ht!]
+	\centering
+	\includegraphics[width=\columnwidth]{Logo/uemc_logo.pdf}      
+	\caption{Logo de la \gls{UEMC}}
+	\label{fig: UEMC_logo}
+\end{figure}
+La figura \ref{fig: UEMC_logo} muestra un ejemplo de figura flotante de \LaTeX en el cual se sitúa la imagen en el margen superior de la página. El posicionamiento de los flotantes en \LaTeX lo decide el propio lenguage aunque haya modificadores para "sugerirle" dónde los queremos, el comando \verb_<\FloatBarrier>_ intenta forzar el posicionamiento, aunque no siempre me ha funcionado.
+
+Otro elemento fundamental son las tablas. Existen mil tipos de generación de tablas en \LaTeX; la tabla \ref{tab: bostonHousing} muestra un ejemplo.
+
+\begin{table} [ht!]
+	\centering
+	\resizebox{0.8\columnwidth}{!}{%
+		\begin{tabular}{L{2.5cm} L{15cm}}
+			\toprule
+			\textbf{Label} & \textbf{Description}\\ \midrule
+			\textbf{CRIM} & Per capita crime rate by town \\ \midrule
+			\textbf{ZN} & Proportion of residential land zoned for lots over 25000 sq. ft \\ \midrule
+			\textbf{INDUS} & Proportion of non-retail business acres per town \\ \midrule
+			\textbf{CHAS} & Charles River dummy variable (= 1 if tract bounds river; 0 otherwise) \\ \midrule
+			\textbf{NOX} & Nitric oxide concentration (parts per 10 million) \\ \midrule
+			\textbf{RM} & Average number of rooms per dwelling \\ \midrule
+			\textbf{AGE} & Proportion of owner-occupied units built prior to 1940 \\ \midrule
+			\textbf{DIS} & Weighted distances to five Boston employment centers \\ \midrule
+			\textbf{RAD} & Index of accessibility to radial highways \\ \midrule
+			\textbf{TAX} & Full-value property tax rate per \$10,000 \\ \midrule
+			\textbf{PTRATIO} & Pupil-teacher ratio by town \\ \midrule
+			\textbf{B} & $1000\left( Bk \text{-} 0.63\right)^2$, where Bk is the proportion of [people of African American descent] by town \\ \midrule
+			\textbf{LSTAT} & Percentage of lower status of the population \\ \midrule
+			\textbf{MEDV} & Median value of owner-occupied homes in \$1000s \\ \bottomrule
+		\end{tabular}
+	}
+	\vspace*{3pt}
+	\caption{Columnas del dataset Boston Housing Price}\label{tab: bostonHousing}
+\end{table}
+
+Ejemplo de elevado en texto. Matlab\superscript{\textregistered} es un lenguaje de programación que pertenece a MathWorks\superscript{\texttrademark}. Otro comando útil es generación de flechas embedidas en texto, \arrowTikz{0}~\arrowTikz{45}~\arrowTikz{90}.
+
+\textcolor{red}{Para que este proyecto funcione se debe compilar en \XeLaTeX debido a que utiliza fuentes del sistema operativo tipo \gls{TTF} y/o \gls{OTF}}
+
+\section{Primera sección}
+\subsection{Subsección}
+\subsubsection{Subsección}
+
+\section*{Sección no numerada}
+\section{Segunda sección numerada}
+
